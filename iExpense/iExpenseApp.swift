@@ -27,6 +27,5 @@ struct iExpenseApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
     }
 }
