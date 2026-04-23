@@ -46,7 +46,7 @@ struct SummaryCard: View {
                         .font(.system(size: 16, weight: .medium))
                 }
             VStack(alignment: .leading, spacing: 2) {
-                Text(title)
+                Text("Total \(title)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Text(total, format: .currency(code: currency))
@@ -111,20 +111,24 @@ struct ContentView: View {
                     List {
                         Section {
                             HStack(spacing: 12) {
-                                SummaryCard(
-                                    title: "Personal",
-                                    total: personalTotal,
-                                    currency: personalExpenses.first?.currency ?? "USD",
-                                    color: .blue,
-                                    icon: "person.fill"
-                                )
-                                SummaryCard(
-                                    title: "Business",
-                                    total: businessTotal,
-                                    currency: businessExpenses.first?.currency ?? "USD",
-                                    color: .orange,
-                                    icon: "briefcase.fill"
-                                )
+                                if !personalExpenses.isEmpty {
+                                    SummaryCard(
+                                        title: "Personal",
+                                        total: personalTotal,
+                                        currency: personalExpenses.first?.currency ?? "USD",
+                                        color: .blue,
+                                        icon: "person.fill"
+                                    )
+                                }
+                                if !businessExpenses.isEmpty {
+                                    SummaryCard(
+                                        title: "Business",
+                                        total: businessTotal,
+                                        currency: businessExpenses.first?.currency ?? "USD",
+                                        color: .orange,
+                                        icon: "briefcase.fill"
+                                    )
+                                }
                             }
                             .listRowInsets(EdgeInsets())
                             .listRowBackground(Color.clear)
