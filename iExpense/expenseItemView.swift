@@ -48,7 +48,7 @@ struct ExpenseItemView: View {
             }
             Spacer() // pushes amount to the right
             
-            Text(item.amount, format: .currency(code: "USD"))
+            Text(item.amount, format: .currency(code: item.currency))
                 .font(.body)
                 .fontWeight(.semibold)
                 .foregroundStyle(amountColor)
@@ -58,9 +58,9 @@ struct ExpenseItemView: View {
 }
 #Preview {
     VStack {
-        ExpenseItemView(item: ExpenseItem(name: "Drink", type: "Personal", amount: 4.50))
-        ExpenseItemView(item: ExpenseItem(name: "Macbook", type: "Business", amount: 1299.00))
-        ExpenseItemView(item: ExpenseItem(name: "Lunch", type: "Personal", amount: 85.00))
+        ExpenseItemView(item: ExpenseItem(name: "Drink", type: "Personal", amount: 4.50, currency: "USD"))
+        ExpenseItemView(item: ExpenseItem(name: "Macbook", type: "Business", amount: 1299.00, currency: "USD"))
+        ExpenseItemView(item: ExpenseItem(name: "Lunch", type: "Personal", amount: 85.00, currency: "USD"))
     }
     .padding()
 }
